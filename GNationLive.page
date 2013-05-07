@@ -1,0 +1,52 @@
+<apex:page sidebar="false" showHeader="false" controller="GNationLiveController">
+ <apex:form >    
+   
+                      <!-- CSS -->
+   <STYLE type="text/css">
+      span.body{font-style:normal;font-size:25px;}
+      span.name{font-style:normal;font-size:18px;}
+      span.time{font-style:normal;font-size:18px;}
+      span.header {padding-left:400px;font-size:28px; text-align:center;}
+      td.left {padding-left:50px;}
+   </STYLE>
+                      
+                       <!-- SPACE FOR BRANDING -->
+                <span class="header"> GTOCK 2013 Live<br/> </span>
+                          
+ <apex:outputText value="Come on GNation! Post on chatter group GStock13 how you feel!" rendered="{!nofeeds == true}"></apex:outputText>
+ 
+ 
+                       <!-- CONTAINER FOR THE POST -->   
+ <hr/>
+ <apex:outputPanel id="Test">
+   <apex:repeat var="feed" value="{!GNationLivePosts}">
+    <table>  
+      <tr> 
+          <td width="1100" class="left">
+             <span class="body">
+                 <apex:outputText value="{!feed.message}"/> <br/><apex:outputLink value="{!feed.ChatterImageURLBig}"><apex:image url="{!feed.ChatterImageURL}"/><br/></apex:outputLink>
+             </span> 
+                 <apex:outputLink value="{!feed.fromLink}"><apex:image url="{!feed.PhotoUrl}" height="43" width="40" style="border:1px solid #; -webkit-border-radius: 20px;-moz-border-radius: 6px; border-radius: 6px;"/></apex:outputLink>
+             <span class="name">
+                  <apex:outputText value="{!feed.fromName}"/>,
+             </span>
+             <span class="time">
+                   <apex:outputText value="{!feed.TimeDiff}"></apex:outputText> ago
+             </span>
+              
+               <!--The Group Name
+                 in&nbsp;<apex:outputLink value="{!feed.toLink}"><apex:outputText value="{!feed.toName}"/></apex:outputLink> 
+               <br/><br/> -->
+          </td>  
+      </tr>
+    </table>
+    <hr/>
+   </apex:repeat> <br /><br /><br /><br /><br /><br /><br /><br />
+  </apex:outputPanel>
+   
+   
+                       <!-- REFRESH POSTS AFTER CERTAIN INTERVALS -->
+  <apex:actionPoller action="{!RefreshPosts}" reRender="Test" interval="{!RefreshTime}"/>
+
+ </apex:form>
+</apex:page>
