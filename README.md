@@ -25,7 +25,6 @@ Please also note that I have written the unit tests for these classes and put up
 ![Alt Text] (https://raw.github.com/subodhbahl/Live-Chatter-Feed/master/Screenshot.jpg)
 
 Above is a screenshot of how the feed looks like.
-
 Please note that if the custom setting specifies the refresh time, it might take a bit longer to refresh the feed. 
 
 ##How to use
